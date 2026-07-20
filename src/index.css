@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 overflow-x-hidden antialiased;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(13, 183, 237, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-800 rounded-full hover:bg-slate-700 transition-colors;
+  }
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  @apply bg-slate-900/50 backdrop-blur-md border border-slate-800/80 shadow-2xl;
+}
+
+.glass-panel-hover {
+  @apply hover:bg-slate-900/75 hover:border-blue-500/30 transition-all duration-300;
+}
+
+.glass-nav {
+  @apply bg-slate-950/70 backdrop-blur-md border-b border-slate-900/80;
+}
+
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 40px -5px rgba(59, 130, 246, 0.2);
+}
+
+.glow-docker {
+  box-shadow: 0 0 40px -5px rgba(13, 183, 237, 0.25);
+}
+
+.glow-orange {
+  box-shadow: 0 0 40px -5px rgba(255, 153, 0, 0.15);
+}
+
+/* Typewriter blinking cursor */
+.typewriter-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: #3b82f6; }
+}
+
+/* Active Navlink tracking */
+.active-navlink {
+  @apply text-blue-400 font-semibold relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-blue-500;
+}
+
+/* Page transitions */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
